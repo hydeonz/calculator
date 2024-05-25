@@ -24,9 +24,12 @@ jobs:
     - name: Install dependencies
       run: pip install -r reqs.txt
 
+    - name: Install xvfb
+      run: sudo apt-get install xvfb
+
     - name: Run unit tests
       run: |
-        python unit_test.py
+        xvfb-run --auto-servernum -- python unit_test.py
 
     - name: Build installer
       run: |
