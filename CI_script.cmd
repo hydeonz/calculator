@@ -1,5 +1,5 @@
 @echo off
-:: Главное меню
+
 :Menu
 echo Choose action:
 echo 1. Download actual dev-version of app
@@ -28,17 +28,23 @@ goto Menu
 
 :LoadDevVersion
 rd /s /q calculator
+echo Cloning repository...
 git clone https://github.com/hydeonz/calculator
+echo Downloading dependencies...
+pip install -r reqs.txt
 goto Menu
 
 :RunApplication
+echo Launching app...
 python calculator/calc.py
 goto Menu
 
 :RunUnitTests
+echo Launching unit tests...
 python calculator/unit_test.py
 goto Menu
 
 :BuildApplication
+echo Building...
 python calculator/setup.py build
 goto Menu
