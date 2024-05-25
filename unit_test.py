@@ -13,6 +13,10 @@ from calc import plus, minus, mul, div, sin, cos, floor, ceil, mod, calculate, o
 
 class TestCalculator(unittest.TestCase):
 
+    def setUp(self):
+        self.root = Tk()
+        self.root.withdraw()
+
     def test_plus(self):
         self.assertEqual(plus(3, 5), 8)
 
