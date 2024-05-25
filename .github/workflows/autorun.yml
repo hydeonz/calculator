@@ -30,9 +30,7 @@ jobs:
 
     - name: Build installer
       run: |
-        cd calculator
         python setup.py sdist
-        cd ..
 
     - name: Install application
       run: |
