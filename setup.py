@@ -1,23 +1,24 @@
-import sys
-from cx_Freeze import setup, Executable
-
-base = None
-if sys.platform == "win32":
-    base = "Win32GUI"
-
-executables = [Executable("calc.py", base=base)]
-
-options = {
-    'build_exe': {
-        'packages': ["tkinter", "math"],
-        'include_files': [],
-    },
-}
+from setuptools import setup, find_packages
 
 setup(
-    name="Calculator",
-    version="1.0",
-    description="Simple calculator using Tkinter",
-    options=options,
-    executables=executables
+    name='calculator',
+    version='1.0',
+    packages=find_packages(),
+    entry_points={
+        'console_scripts': [
+            'calculator = calc:main',  
+        ],
+    },
+    install_requires=[
+
+    ],
+    description='Простое приложение-калькулятор',
+    license='MIT',
+    keywords='calculator',
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+    ],
 )
