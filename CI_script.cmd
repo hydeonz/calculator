@@ -5,7 +5,8 @@ echo Choose action:
 echo 1. Download actual dev-version of app
 echo 2. Run app
 echo 3. Run Unit-Tests
-echo 4. Build app
+echo 4. Build installer
+echo 5. Upload artifact
 
 set /p choice=Enter your chose: 
 
@@ -17,6 +18,8 @@ if "%choice%"=="1" (
     call :RunUnitTests
 ) else if "%choice%"=="4" (
     call :BuildApplication
+) else if "%choice%"=="5" (
+    call :UploadArtifact
 ) else (
     echo Enter valid answer
 )
@@ -47,6 +50,14 @@ goto Menu
 :BuildApplication
 echo Building...
 cd calculator
-python ./setup.py build
+python ./setup.py sdist
 cd ..
+goto Menu
+
+:UploadArtifact
+echo Uploading...
+cd calculator
+cd dist
+pip install calculator-1.0.tar.gz
+cd ../..
 goto Menu
