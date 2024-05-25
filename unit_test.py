@@ -1,21 +1,8 @@
 import unittest
-import tkinter as tk
-from tkinter import StringVar
-from tkinter import OptionMenu
-from tkinter import Entry
-from tkinter import Button
-from tkinter import Label
-from tkinter import DISABLED, NORMAL
-from unittest.mock import patch
-
-from calc import plus, minus, mul, div, sin, cos, floor, ceil, mod, calculate, on_dropdown_change
-
+import math
+from calc import plus, minus, mul, div, sin, cos, floor, ceil, mod
 
 class TestCalculator(unittest.TestCase):
-
-    def setUp(self):
-        self.root = Tk()
-        self.root.withdraw()
 
     def test_plus(self):
         self.assertEqual(plus(3, 5), 8)
@@ -43,7 +30,6 @@ class TestCalculator(unittest.TestCase):
 
     def test_mod(self):
         self.assertEqual(mod(10, 3), 1)
-
 
 if __name__ == '__main__':
     unittest.main()
