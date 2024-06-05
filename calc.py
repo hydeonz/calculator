@@ -44,30 +44,32 @@ def calculate(entry1, entry2, dropdown, result_label):
             result_label.config(text="Ошибка, нельзя делить на 0")
             return
 
-        if operation == '+':
-            result = plus(num1, num2)
-        elif operation == '-':
-            result = minus(num1, num2)
-        elif operation == '*':
-            result = mul(num1, num2)
-        elif operation == '/':
-            result = div(num1, num2)
-        elif operation == 'sin':
-            result = sin(num1)
-        elif operation == 'cos':
-            result = cos(num1)
-        elif operation == 'floor':
-            result = floor(num1)
-        elif operation == 'ceil':
-            result = ceil(num1)
-        elif operation == 'mod':
-            result = mod(num1, num2)
-        else:
-            result = "Ошибка"
-
+        result = perform_calculation(num1, num2, operation)
         result_label.config(text="Результат: " + str(result))
     except ValueError:
         result_label.config(text="Непредвиденная ошибка")
+
+def perform_calculation(num1, num2, operation):
+    if operation == '+':
+        return plus(num1, num2)
+    elif operation == '-':
+        return minus(num1, num2)
+    elif operation == '*':
+        return mul(num1, num2)
+    elif operation == '/':
+        return div(num1, num2)
+    elif operation == 'sin':
+        return sin(num1)
+    elif operation == 'cos':
+        return cos(num1)
+    elif operation == 'floor':
+        return floor(num1)
+    elif operation == 'ceil':
+        return ceil(num1)
+    elif operation == 'mod':
+        return mod(num1, num2)
+    else:
+        return "Ошибка"
 
 def on_dropdown_change(entry2, dropdown):
     operation = dropdown.get()
